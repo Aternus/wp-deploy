@@ -1,0 +1,62 @@
+{
+  "name": "wp-deploy",
+  "version": "0.0.0",
+  "description": "WordPress deployments made simple.",
+  "keywords": [
+    "wordpress",
+    "wp",
+    "deploy",
+    "deployment",
+    "simple",
+    "ftp",
+    "shared hosting",
+    "sync",
+    "db",
+    "database",
+    "files",
+    "cli",
+    "tool"
+  ],
+  "type": "module",
+  "types": "./dist/index.d.mts",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "author": {
+    "name": "Kiril Reznik"
+  },
+  "license": "GPL-3.0-or-later",
+  "homepage": "https://github.com/Aternus/wp-deploy",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aternus/wp-deploy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Aternus/wp-deploy/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "4.7.1",
+    "@types/node": "^22.19.15",
+    "prettier": "3.8.1",
+    "tsdown": "^0.21.1",
+    "typescript": "5.9.3",
+    "vitest": "^4.0.18"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
