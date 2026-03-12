@@ -26,12 +26,18 @@
   "files": [
     "dist"
   ],
+  "bin": {
+    "wp-deploy": "./dist/cli.mjs"
+  },
   "scripts": {
+    "prepare": "husky",
+    "prepublishOnly": "npm run build",
     "build": "tsdown",
     "dev": "tsdown --watch",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
-    "prepublishOnly": "npm run build"
+    "lint:prettier": "npx prettier --check .",
+    "lint:eslint": "npx eslint ."
   },
   "author": {
     "name": "Kiril Reznik"
@@ -49,12 +55,22 @@
     "access": "public"
   },
   "devDependencies": {
+    "@commitlint/cli": "^20.4.4",
+    "@commitlint/config-conventional": "^20.4.4",
+    "@eslint/js": "10.0.1",
     "@ianvs/prettier-plugin-sort-imports": "4.7.1",
     "@types/node": "^22.19.15",
+    "@vitest/eslint-plugin": "1.6.11",
+    "eslint": "10.0.3",
+    "eslint-config-prettier": "10.1.8",
+    "globals": "17.4.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.3.3",
     "prettier": "3.8.1",
-    "tsdown": "^0.21.1",
+    "tsdown": "0.21.2",
     "typescript": "5.9.3",
-    "vitest": "^4.0.18"
+    "typescript-eslint": "8.57.0",
+    "vitest": "4.1.0"
   },
   "engines": {
     "node": ">=22"

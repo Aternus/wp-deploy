@@ -1,0 +1,5 @@
+#:schema https://developers.openai.com/codex/config-schema.json
+# @see https://developers.openai.com/codex/config-reference
+
+[features]
+multi_agent = true

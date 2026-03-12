@@ -9,7 +9,7 @@ const config = {
   jsxSingleQuote: true,
   singleAttributePerLine: false,
   trailingComma: 'all',
-  bracketSpacing: false,
+  bracketSpacing: true,
   bracketSameLine: false,
   arrowParens: 'always',
   proseWrap: 'always', // markdown
@@ -29,4 +29,4 @@ const config = {
   importOrderTypeScriptVersion: '5.0.0',
 };
 
-module.exports = config;
+export default config;
