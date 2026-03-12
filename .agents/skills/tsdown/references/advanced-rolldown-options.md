@@ -4,12 +4,9 @@ Pass options directly to the underlying Rolldown bundler.
 
 ## Overview
 
-tsdown uses [Rolldown](https://rolldown.rs) as its core bundling engine. You can
-override Rolldown's input and output options directly for fine-grained control.
+tsdown uses [Rolldown](https://rolldown.rs) as its core bundling engine. You can override Rolldown's input and output options directly for fine-grained control.
 
-**Warning:** You should be familiar with Rolldown's behavior before overriding
-options. Refer to the
-[Rolldown Config Options](https://rolldown.rs/options/input) documentation.
+**Warning:** You should be familiar with Rolldown's behavior before overriding options. Refer to the [Rolldown Config Options](https://rolldown.rs/options/input) documentation.
 
 ## Input Options
 
@@ -20,7 +17,7 @@ export default defineConfig({
   inputOptions: {
     cwd: './custom-directory',
   },
-});
+})
 ```
 
 ### Using a Function
@@ -30,10 +27,10 @@ Dynamically modify options based on the output format:
 ```ts
 export default defineConfig({
   inputOptions(inputOptions, format) {
-    inputOptions.cwd = './custom-directory';
-    return inputOptions;
+    inputOptions.cwd = './custom-directory'
+    return inputOptions
   },
-});
+})
 ```
 
 ## Output Options
@@ -45,7 +42,7 @@ export default defineConfig({
   outputOptions: {
     legalComments: 'inline',
   },
-});
+})
 ```
 
 ### Using a Function
@@ -54,11 +51,11 @@ export default defineConfig({
 export default defineConfig({
   outputOptions(outputOptions, format) {
     if (format === 'esm') {
-      outputOptions.legalComments = 'inline';
+      outputOptions.legalComments = 'inline'
     }
-    return outputOptions;
+    return outputOptions
   },
-});
+})
 ```
 
 ## Common Use Cases
@@ -71,7 +68,7 @@ export default defineConfig({
   outputOptions: {
     legalComments: 'inline',
   },
-});
+})
 ```
 
 ### Custom Working Directory
@@ -82,7 +79,7 @@ export default defineConfig({
   inputOptions: {
     cwd: './packages/my-lib',
   },
-});
+})
 ```
 
 ### Format-Specific Options
@@ -93,11 +90,11 @@ export default defineConfig({
   format: ['esm', 'cjs'],
   outputOptions(outputOptions, format) {
     if (format === 'esm') {
-      outputOptions.legalComments = 'inline';
+      outputOptions.legalComments = 'inline'
     }
-    return outputOptions;
+    return outputOptions
   },
-});
+})
 ```
 
 ## When to Use
@@ -111,8 +108,7 @@ export default defineConfig({
 1. **Read Rolldown docs** before overriding options
 2. **Use functions** for format-specific customization
 3. **Test thoroughly** when overriding defaults
-4. **Prefer tsdown options** when available (e.g., use `minify` instead of
-   setting it via `outputOptions`)
+4. **Prefer tsdown options** when available (e.g., use `minify` instead of setting it via `outputOptions`)
 
 ## Related
 

@@ -4,9 +4,7 @@ Preserve source directory structure in output.
 
 ## Overview
 
-Unbundle mode (also called "bundleless" or "transpile-only") outputs files that
-mirror your source structure, rather than bundling everything into single files.
-Each source file is compiled individually with a one-to-one mapping.
+Unbundle mode (also called "bundleless" or "transpile-only") outputs files that mirror your source structure, rather than bundling everything into single files. Each source file is compiled individually with a one-to-one mapping.
 
 ## Basic Usage
 
@@ -22,7 +20,7 @@ tsdown --unbundle
 export default defineConfig({
   entry: ['src/**/*.ts', '!**/*.test.ts'],
   unbundle: true,
-});
+})
 ```
 
 ## How It Works
@@ -42,16 +40,14 @@ src/
 ### With Unbundle
 
 **Config:**
-
 ```ts
 export default defineConfig({
   entry: ['src/index.ts'],
   unbundle: true,
-});
+})
 ```
 
 **Output:**
-
 ```
 dist/
 ├── index.mjs
@@ -67,7 +63,6 @@ All imported files are output individually, preserving structure.
 ### Without Unbundle (Default)
 
 **Output:**
-
 ```
 dist/
 └── index.mjs  (all code bundled together)
@@ -77,16 +72,20 @@ dist/
 
 ### Use Unbundle When:
 
-✅ Building monorepo packages with shared utilities ✅ Users need to import
-individual modules ✅ Want clear source-to-output mapping ✅ Library with many
-independent utilities ✅ Debugging requires tracing specific files ✅
-Incremental builds for faster development
+✅ Building monorepo packages with shared utilities
+✅ Users need to import individual modules
+✅ Want clear source-to-output mapping
+✅ Library with many independent utilities
+✅ Debugging requires tracing specific files
+✅ Incremental builds for faster development
 
 ### Use Standard Bundling When:
 
-❌ Single entry point application ❌ Want to optimize bundle size ❌ Need
-aggressive tree shaking ❌ Creating IIFE/UMD bundles ❌ Deploying to browsers
-directly
+❌ Single entry point application
+❌ Want to optimize bundle size
+❌ Need aggressive tree shaking
+❌ Creating IIFE/UMD bundles
+❌ Deploying to browsers directly
 
 ## Common Patterns
 
@@ -98,21 +97,19 @@ export default defineConfig({
   format: ['esm', 'cjs'],
   unbundle: true,
   dts: true,
-});
+})
 ```
 
 **Benefits:**
-
 - Users import only what they need
 - Tree shaking still works at user's build
 - Clear module boundaries
 
 **Usage:**
-
 ```ts
 // Users can import specific utilities
-import { Button } from 'my-lib/components/button';
-import { helper } from 'my-lib/utils/helper';
+import { helper } from 'my-lib/utils/helper'
+import { Button } from 'my-lib/components/button'
 ```
 
 ### Monorepo Shared Package
@@ -123,7 +120,7 @@ export default defineConfig({
   format: ['esm'],
   unbundle: true,
   outDir: 'dist',
-});
+})
 ```
 
 ### TypeScript Compilation Only
@@ -136,7 +133,7 @@ export default defineConfig({
   minify: false,
   treeshake: false,
   dts: true,
-});
+})
 ```
 
 Pure TypeScript to JavaScript transformation.
@@ -146,9 +143,9 @@ Pure TypeScript to JavaScript transformation.
 ```ts
 export default defineConfig((options) => ({
   entry: ['src/**/*.ts'],
-  unbundle: options.watch, // Unbundle in dev only
+  unbundle: options.watch,  // Unbundle in dev only
   minify: !options.watch,
-}));
+}))
 ```
 
 Fast rebuilds during development, optimized for production.
@@ -159,9 +156,14 @@ Fast rebuilds during development, optimized for production.
 
 ```ts
 export default defineConfig({
-  entry: ['src/**/*.ts', '!**/*.test.ts', '!**/*.spec.ts', '!**/fixtures/**'],
+  entry: [
+    'src/**/*.ts',
+    '!**/*.test.ts',
+    '!**/*.spec.ts',
+    '!**/fixtures/**',
+  ],
   unbundle: true,
-});
+})
 ```
 
 ### Multiple Entry Points
@@ -173,7 +175,7 @@ export default defineConfig({
     cli: 'src/cli.ts',
   },
   unbundle: true,
-});
+})
 ```
 
 Both entry files and all imports preserved.
@@ -187,7 +189,7 @@ export default defineConfig({
   entry: ['src/**/*.ts'],
   unbundle: true,
   outExtensions: () => ({ js: '.js' }),
-});
+})
 ```
 
 ### Preserve Directory
@@ -197,11 +199,10 @@ export default defineConfig({
   entry: ['src/**/*.ts'],
   unbundle: true,
   outDir: 'lib',
-});
+})
 ```
 
 **Output:**
-
 ```
 lib/
 ├── index.js
@@ -232,22 +233,21 @@ Or use `exports: true` to auto-generate.
 
 ## Comparison
 
-| Feature        | Bundled    | Unbundled    |
-| -------------- | ---------- | ------------ |
-| Output files   | Few        | Many         |
-| File size      | Smaller    | Larger       |
-| Build speed    | Slower     | Faster       |
-| Tree shaking   | Build time | User's build |
-| Source mapping | Complex    | Simple       |
-| Module imports | Entry only | Any module   |
-| Dev rebuilds   | Slower     | Faster       |
+| Feature | Bundled | Unbundled |
+|---------|---------|-----------|
+| Output files | Few | Many |
+| File size | Smaller | Larger |
+| Build speed | Slower | Faster |
+| Tree shaking | Build time | User's build |
+| Source mapping | Complex | Simple |
+| Module imports | Entry only | Any module |
+| Dev rebuilds | Slower | Faster |
 
 ## Performance
 
 ### Build Speed
 
 Unbundle is typically faster:
-
 - No bundling overhead
 - Parallel file processing
 - Incremental builds possible
@@ -255,7 +255,6 @@ Unbundle is typically faster:
 ### Bundle Size
 
 Unbundle produces larger output:
-
 - Each file has its own overhead
 - No cross-module optimizations
 - User's bundler handles final optimization

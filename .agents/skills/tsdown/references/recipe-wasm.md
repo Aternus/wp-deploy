@@ -4,9 +4,7 @@ Bundle WebAssembly modules in your TypeScript/JavaScript project.
 
 ## Overview
 
-tsdown supports WASM through
-[`rolldown-plugin-wasm`](https://github.com/sxzz/rolldown-plugin-wasm), enabling
-direct `.wasm` imports with synchronous and asynchronous instantiation.
+tsdown supports WASM through [`rolldown-plugin-wasm`](https://github.com/sxzz/rolldown-plugin-wasm), enabling direct `.wasm` imports with synchronous and asynchronous instantiation.
 
 ## Setup
 
@@ -19,13 +17,13 @@ pnpm add -D rolldown-plugin-wasm
 ### Configure
 
 ```ts
-import { wasm } from 'rolldown-plugin-wasm';
-import { defineConfig } from 'tsdown';
+import { wasm } from 'rolldown-plugin-wasm'
+import { defineConfig } from 'tsdown'
 
 export default defineConfig({
   entry: ['./src/index.ts'],
   plugins: [wasm()],
-});
+})
 ```
 
 ### TypeScript Support
@@ -35,8 +33,8 @@ Add type declarations to `tsconfig.json`:
 ```jsonc
 {
   "compilerOptions": {
-    "types": ["rolldown-plugin-wasm/types"],
-  },
+    "types": ["rolldown-plugin-wasm/types"]
+  }
 }
 ```
 
@@ -45,9 +43,8 @@ Add type declarations to `tsconfig.json`:
 ### Direct Import
 
 ```ts
-import { add } from './add.wasm';
-
-add(1, 2);
+import { add } from './add.wasm'
+add(1, 2)
 ```
 
 ### Async Init
@@ -55,10 +52,9 @@ add(1, 2);
 Use `?init` query for async initialization:
 
 ```ts
-import init from './add.wasm?init';
-
-const instance = await init(imports); // imports optional
-instance.exports.add(1, 2);
+import init from './add.wasm?init'
+const instance = await init(imports) // imports optional
+instance.exports.add(1, 2)
 ```
 
 ### Sync Init
@@ -66,10 +62,9 @@ instance.exports.add(1, 2);
 Use `?init&sync` query for synchronous initialization:
 
 ```ts
-import initSync from './add.wasm?init&sync';
-
-const instance = initSync(imports); // imports optional
-instance.exports.add(1, 2);
+import initSync from './add.wasm?init&sync'
+const instance = initSync(imports) // imports optional
+instance.exports.add(1, 2)
 ```
 
 ## wasm-bindgen Support
@@ -77,33 +72,31 @@ instance.exports.add(1, 2);
 ### Target `bundler` (Recommended)
 
 ```ts
-import { add } from 'some-pkg';
-
-add(1, 2);
+import { add } from 'some-pkg'
+add(1, 2)
 ```
 
 ### Target `web` (Node.js)
 
 ```ts
-import { readFile } from 'node:fs/promises';
-
-import init, { add } from 'some-pkg';
-import wasmUrl from 'some-pkg/add_bg.wasm?url';
+import { readFile } from 'node:fs/promises'
+import init, { add } from 'some-pkg'
+import wasmUrl from 'some-pkg/add_bg.wasm?url'
 
 await init({
   module_or_path: readFile(new URL(wasmUrl, import.meta.url)),
-});
-add(1, 2);
+})
+add(1, 2)
 ```
 
 ### Target `web` (Browser)
 
 ```ts
-import wasmUrl from 'some-pkg/add_bg.wasm?url';
-import init, { add } from 'some-pkg/add.js';
+import init, { add } from 'some-pkg/add.js'
+import wasmUrl from 'some-pkg/add_bg.wasm?url'
 
-await init({ module_or_path: wasmUrl });
-add(1, 2);
+await init({ module_or_path: wasmUrl })
+add(1, 2)
 ```
 
 `nodejs` and `no-modules` wasm-bindgen targets are not supported.
@@ -114,17 +107,17 @@ add(1, 2);
 wasm({
   maxFileSize: 14 * 1024, // Max size for inline (default: 14KB)
   fileName: '[hash][extname]', // Output file name pattern
-  publicPath: '', // Prefix for non-inlined file paths
-  targetEnv: 'auto', // 'auto' | 'auto-inline' | 'browser' | 'node'
-});
+  publicPath: '',         // Prefix for non-inlined file paths
+  targetEnv: 'auto',      // 'auto' | 'auto-inline' | 'browser' | 'node'
+})
 ```
 
-| Option        | Default             | Description                                                                        |
-| ------------- | ------------------- | ---------------------------------------------------------------------------------- |
-| `maxFileSize` | `14 * 1024`         | Max file size for inlining. Set to `0` to always copy.                             |
-| `fileName`    | `'[hash][extname]'` | Pattern for emitted WASM files                                                     |
-| `publicPath`  | —                   | Prefix for non-inlined WASM file paths                                             |
-| `targetEnv`   | `'auto'`            | `'auto'` detects at runtime; `'browser'` omits Node builtins; `'node'` omits fetch |
+| Option | Default | Description |
+|--------|---------|-------------|
+| `maxFileSize` | `14 * 1024` | Max file size for inlining. Set to `0` to always copy. |
+| `fileName` | `'[hash][extname]'` | Pattern for emitted WASM files |
+| `publicPath` | — | Prefix for non-inlined WASM file paths |
+| `targetEnv` | `'auto'` | `'auto'` detects at runtime; `'browser'` omits Node builtins; `'node'` omits fetch |
 
 ## Related Options
 

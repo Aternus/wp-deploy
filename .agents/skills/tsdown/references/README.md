@@ -5,12 +5,10 @@ This directory contains detailed reference documentation for the tsdown skill.
 ## Created Files (31 total)
 
 ### Core Guides (2)
-
 - ✅ `guide-getting-started.md` - Installation, first bundle, CLI basics
 - ✅ `guide-migrate-from-tsup.md` - Migration guide from tsup
 
 ### Configuration Options (20)
-
 - ✅ `option-config-file.md` - Config file formats, loaders, workspace
 - ✅ `option-entry.md` - Entry point configuration with globs
 - ✅ `option-output-format.md` - Output formats (ESM, CJS, IIFE, UMD)
@@ -20,8 +18,7 @@ This directory contains detailed reference documentation for the tsdown skill.
 - ✅ `option-platform.md` - Platform (node, browser, neutral)
 - ✅ `option-dependencies.md` - External and inline dependencies
 - ✅ `option-sourcemap.md` - Source map generation
-- ✅ `option-minification.md` - Minification
-  (`boolean | 'dce-only' | MinifyOptions`)
+- ✅ `option-minification.md` - Minification (`boolean | 'dce-only' | MinifyOptions`)
 - ✅ `option-tree-shaking.md` - Tree shaking configuration
 - ✅ `option-cleaning.md` - Output directory cleaning
 - ✅ `option-watch-mode.md` - Watch mode configuration
@@ -34,7 +31,6 @@ This directory contains detailed reference documentation for the tsdown skill.
 - ✅ `option-lint.md` - Package validation (publint & attw)
 
 ### Advanced Topics (5)
-
 - ✅ `advanced-plugins.md` - Rolldown, Rollup, Unplugin support
 - ✅ `advanced-hooks.md` - Lifecycle hooks system
 - ✅ `advanced-programmatic.md` - Node.js API usage
@@ -42,19 +38,17 @@ This directory contains detailed reference documentation for the tsdown skill.
 - ✅ `advanced-ci.md` - CI environment detection and CI-aware options
 
 ### Framework Recipes (3)
-
 - ✅ `recipe-react.md` - React library setup with JSX
 - ✅ `recipe-vue.md` - Vue library setup with SFC
 - ✅ `recipe-wasm.md` - WASM module support
 
 ### Reference (1)
-
 - ✅ `reference-cli.md` - Complete CLI command reference
 
 ## Coverage Status
 
-**Created:** 31 files (97% complete) **Remaining:** 3 files (low priority, not
-referenced from SKILL.md)
+**Created:** 31 files (97% complete)
+**Remaining:** 3 files (low priority, not referenced from SKILL.md)
 
 ### Remaining Files (Lower Priority)
 
@@ -69,7 +63,6 @@ These files can be added as needed:
 The tsdown skill now includes comprehensive coverage of:
 
 ### ✅ Core Functionality
-
 - Getting started and installation
 - Entry points and glob patterns
 - Output formats (ESM, CJS, IIFE, UMD)
@@ -78,7 +71,6 @@ The tsdown skill now includes comprehensive coverage of:
 - CLI reference
 
 ### ✅ Build Options
-
 - Target environment configuration
 - Platform selection
 - Dependency management
@@ -89,7 +81,6 @@ The tsdown skill now includes comprehensive coverage of:
 - Watch mode
 
 ### ✅ Advanced Features
-
 - Plugins (Rolldown, Rollup, Unplugin)
 - Lifecycle hooks
 - ESM/CJS shims
@@ -102,7 +93,6 @@ The tsdown skill now includes comprehensive coverage of:
 - CI environment detection and CI-aware options
 
 ### ✅ Framework & Runtime Support
-
 - React with JSX/TSX
 - React Compiler integration
 - Vue with SFC support
@@ -110,19 +100,16 @@ The tsdown skill now includes comprehensive coverage of:
 - WASM module bundling (rolldown-plugin-wasm)
 
 ### ✅ Migration
-
 - Complete migration guide from tsup
 - Compatibility notes
 
 ## Usage
 
-The skill is now ready for use with comprehensive coverage of core features.
-Additional files can be added incrementally as needed.
+The skill is now ready for use with comprehensive coverage of core features. Additional files can be added incrementally as needed.
 
 ## File Naming Convention
 
 Files are prefixed by category:
-
 - `guide-*` - Getting started guides and tutorials
 - `option-*` - Configuration options
 - `advanced-*` - Advanced topics (plugins, hooks, programmatic API)

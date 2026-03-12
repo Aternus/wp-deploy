@@ -4,8 +4,7 @@ Automatically rebuild when files change.
 
 ## Overview
 
-Watch mode monitors your source files and rebuilds automatically on changes,
-streamlining the development workflow.
+Watch mode monitors your source files and rebuilds automatically on changes, streamlining the development workflow.
 
 ## Basic Usage
 
@@ -31,7 +30,7 @@ tsdown --watch ./src/index.ts
 export default defineConfig({
   entry: ['src/index.ts'],
   watch: true,
-});
+})
 ```
 
 ## Watch Options
@@ -50,7 +49,7 @@ export default defineConfig({
   watch: {
     exclude: ['test/**', '**/*.test.ts'],
   },
-});
+})
 ```
 
 ### On Success Command
@@ -67,7 +66,7 @@ export default defineConfig({
   entry: ['src/index.ts'],
   watch: true,
   onSuccess: 'node dist/index.mjs',
-});
+})
 ```
 
 ## Watch Behavior
@@ -75,7 +74,6 @@ export default defineConfig({
 ### Default Watch Targets
 
 By default, tsdown watches:
-
 - All entry files
 - All imported files
 - Config file (triggers restart)
@@ -89,7 +87,6 @@ By default, tsdown watches:
 ### Keyboard Shortcuts
 
 During watch mode:
-
 - `r` - Manual rebuild
 - `q` - Quit watch mode
 
@@ -104,7 +101,7 @@ export default defineConfig((options) => ({
   watch: options.watch,
   sourcemap: options.watch,
   minify: !options.watch,
-}));
+}))
 ```
 
 ### With Post-Build Script
@@ -114,7 +111,7 @@ export default defineConfig({
   entry: ['src/index.ts'],
   watch: true,
   onSuccess: 'npm run test',
-});
+})
 ```
 
 ### Multiple Entry Points
@@ -126,8 +123,8 @@ export default defineConfig({
     cli: 'src/cli.ts',
   },
   watch: true,
-  clean: false, // Don't clean on each rebuild
-});
+  clean: false,  // Don't clean on each rebuild
+})
 ```
 
 ### Test Runner Integration
@@ -150,7 +147,7 @@ export default defineConfig({
   watch: {
     exclude: ['**/test/**', '**/*.spec.ts'],
   },
-});
+})
 ```
 
 ## Advanced Configuration
@@ -165,23 +162,23 @@ export default defineConfig({
     exclude: ['**/*.test.ts', '**/fixtures/**'],
     skipWrite: false,
   },
-});
+})
 ```
 
 ### Conditional Watch
 
 ```ts
 export default defineConfig((options) => {
-  const isDev = options.watch;
+  const isDev = options.watch
 
   return {
     entry: ['src/index.ts'],
     format: ['esm'],
-    dts: !isDev, // Skip DTS in watch mode
+    dts: !isDev,        // Skip DTS in watch mode
     sourcemap: isDev,
     clean: !isDev,
-  };
-});
+  }
+})
 ```
 
 ## CLI Examples
@@ -233,9 +230,14 @@ Add ignore patterns:
 ```ts
 export default defineConfig({
   watch: {
-    exclude: ['**/node_modules/**', '**/.git/**', '**/dist/**', '**/*.test.ts'],
+    exclude: [
+      '**/node_modules/**',
+      '**/.git/**',
+      '**/dist/**',
+      '**/*.test.ts',
+    ],
   },
-});
+})
 ```
 
 ### Slow Rebuilds
@@ -250,9 +252,7 @@ Config file changes trigger full restart automatically.
 
 ### Why Not Stub Mode?
 
-tsdown does not support stub mode. Watch mode is the recommended alternative for
-rapid development, providing instant rebuilds without the drawbacks of stub
-mode.
+tsdown does not support stub mode. Watch mode is the recommended alternative for rapid development, providing instant rebuilds without the drawbacks of stub mode.
 
 ## Related Options
 

@@ -4,9 +4,7 @@ Control how default exports are handled in CommonJS output.
 
 ## Overview
 
-The `cjsDefault` option improves compatibility when generating CommonJS modules.
-When enabled (default), modules with only a single default export use
-`module.exports = ...` instead of `exports.default = ...`.
+The `cjsDefault` option improves compatibility when generating CommonJS modules. When enabled (default), modules with only a single default export use `module.exports = ...` instead of `exports.default = ...`.
 
 ## Type
 
@@ -22,8 +20,8 @@ cjsDefault?: boolean  // default: true
 export default defineConfig({
   entry: ['src/index.ts'],
   format: ['cjs'],
-  cjsDefault: true, // default behavior
-});
+  cjsDefault: true,  // default behavior
+})
 ```
 
 ### Disabled
@@ -33,7 +31,7 @@ export default defineConfig({
   entry: ['src/index.ts'],
   format: ['cjs'],
   cjsDefault: false,
-});
+})
 ```
 
 ## How It Works
@@ -43,30 +41,27 @@ export default defineConfig({
 When your module has **only a single default export**, tsdown transforms:
 
 **Source:**
-
 ```ts
 // src/index.ts
 export default function greet() {
-  console.log('Hello, world!');
+  console.log('Hello, world!')
 }
 ```
 
 **Generated CJS:**
-
 ```js
 // dist/index.cjs
 function greet() {
-  console.log('Hello, world!');
+  console.log('Hello, world!')
 }
-module.exports = greet;
+module.exports = greet
 ```
 
 **Generated Declaration:**
-
 ```ts
 // dist/index.d.cts
-declare function greet(): void;
-export = greet;
+declare function greet(): void
+export = greet
 ```
 
 This allows consumers to use `const greet = require('your-module')` directly.
@@ -78,9 +73,9 @@ The default export stays as `exports.default`:
 ```js
 // dist/index.cjs
 function greet() {
-  console.log('Hello, world!');
+  console.log('Hello, world!')
 }
-exports.default = greet;
+exports.default = greet
 ```
 
 Consumers need `require('your-module').default`.
@@ -94,8 +89,7 @@ Consumers need `require('your-module').default`.
 ## Tips
 
 1. **Leave enabled** for most libraries (default `true`)
-2. **Disable** if you have both default and named exports and need consistent
-   behavior
+2. **Disable** if you have both default and named exports and need consistent behavior
 3. **Test CJS consumers** to verify compatibility
 
 ## Related Options

@@ -4,8 +4,7 @@ Configure which files to bundle as entry points.
 
 ## Overview
 
-Entry points are the starting files for the bundling process. Each entry point
-generates a separate bundle.
+Entry points are the starting files for the bundling process. Each entry point generates a separate bundle.
 
 ## Usage Patterns
 
@@ -29,7 +28,7 @@ tsdown 'src/*.ts'
 ```ts
 export default defineConfig({
   entry: 'src/index.ts',
-});
+})
 ```
 
 #### Multiple Entries (Array)
@@ -37,7 +36,7 @@ export default defineConfig({
 ```ts
 export default defineConfig({
   entry: ['src/entry1.ts', 'src/entry2.ts'],
-});
+})
 ```
 
 #### Named Entries (Object)
@@ -49,11 +48,10 @@ export default defineConfig({
     utils: 'src/utils.ts',
     cli: 'src/cli.ts',
   },
-});
+})
 ```
 
 Output files will match the keys:
-
 - `dist/main.mjs`
 - `dist/utils.mjs`
 - `dist/cli.mjs`
@@ -67,7 +65,7 @@ Match multiple files dynamically using glob patterns:
 ```ts
 export default defineConfig({
   entry: 'src/**/*.ts',
-});
+})
 ```
 
 ### Exclude Test Files
@@ -75,13 +73,12 @@ export default defineConfig({
 ```ts
 export default defineConfig({
   entry: ['src/*.ts', '!src/*.test.ts'],
-});
+})
 ```
 
 ### Object Entries with Glob Patterns
 
-Use glob wildcards (`*`) in both keys and values. The `*` in the key acts as a
-placeholder replaced with the matched file name (without extension):
+Use glob wildcards (`*`) in both keys and values. The `*` in the key acts as a placeholder replaced with the matched file name (without extension):
 
 ```ts
 export default defineConfig({
@@ -89,7 +86,7 @@ export default defineConfig({
     // Maps src/foo.ts → dist/lib/foo.js, src/bar.ts → dist/lib/bar.js
     'lib/*': 'src/*.ts',
   },
-});
+})
 ```
 
 #### Negation Patterns in Object Entries
@@ -101,7 +98,7 @@ export default defineConfig({
   entry: {
     'hooks/*': ['src/hooks/*.ts', '!src/hooks/index.ts'],
   },
-});
+})
 ```
 
 Multiple positive and negation patterns:
@@ -116,11 +113,10 @@ export default defineConfig({
       '!src/utils/internal.ts',
     ],
   },
-});
+})
 ```
 
-**Warning:** Multiple positive patterns in an array value must share the same
-base directory.
+**Warning:** Multiple positive patterns in an array value must share the same base directory.
 
 ### Mixed Entries
 
@@ -134,7 +130,7 @@ export default defineConfig({
     { main: 'index.ts' },
     { 'lib/*': ['src/*.ts', '!src/bar.ts'] },
   ],
-});
+})
 ```
 
 Object entries take precedence when output names conflict.
@@ -145,10 +141,10 @@ Use forward slashes `/` instead of backslashes `\` on Windows:
 
 ```ts
 // ✅ Correct
-entry: 'src/utils/*.ts';
+entry: 'src/utils/*.ts'
 
 // ❌ Wrong on Windows
-entry: 'src\\utils\\*.ts';
+entry: 'src\\utils\\*.ts'
 ```
 
 ## Common Patterns
@@ -160,7 +156,7 @@ export default defineConfig({
   entry: 'src/index.ts',
   format: ['esm', 'cjs'],
   dts: true,
-});
+})
 ```
 
 ### Library with Multiple Exports
@@ -174,7 +170,7 @@ export default defineConfig({
   },
   format: ['esm', 'cjs'],
   dts: true,
-});
+})
 ```
 
 ### CLI Tool
@@ -186,7 +182,7 @@ export default defineConfig({
   },
   format: ['esm'],
   platform: 'node',
-});
+})
 ```
 
 ### Preserve Directory Structure
@@ -199,11 +195,10 @@ export default defineConfig({
   unbundle: true,
   format: ['esm'],
   dts: true,
-});
+})
 ```
 
 This will output files matching the source structure:
-
 - `src/index.ts` → `dist/index.mjs`
 - `src/utils/helper.ts` → `dist/utils/helper.mjs`
 

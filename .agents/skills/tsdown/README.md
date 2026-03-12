@@ -1,7 +1,6 @@
 # tsdown Skills for Claude Code
 
-Agent skills that help Claude Code understand and work with
-[tsdown](https://tsdown.dev), the elegant library bundler.
+Agent skills that help Claude Code understand and work with [tsdown](https://tsdown.dev), the elegant library bundler.
 
 ## Installation
 
@@ -16,8 +15,7 @@ This will add the tsdown skill to your Claude Code configuration.
 The tsdown skill provides Claude Code with knowledge about:
 
 - **Core Concepts** - What tsdown is, why use it, key features
-- **Configuration** - Config file formats, options, multiple configs, workspace
-  support
+- **Configuration** - Config file formats, options, multiple configs, workspace support
 - **Build Options** - Entry points, output formats, type declarations, targets
 - **Dependency Handling** - External/inline dependencies, auto-externalization
 - **Output Enhancement** - Shims, CJS defaults, package exports

@@ -4,8 +4,7 @@ Control the verbosity of build output.
 
 ## Overview
 
-The `logLevel` option controls how much information tsdown displays during the
-build process.
+The `logLevel` option controls how much information tsdown displays during the build process.
 
 ## Type
 
@@ -39,17 +38,17 @@ tsdown --log-level info
 export default defineConfig({
   entry: ['src/index.ts'],
   logLevel: 'error',
-});
+})
 ```
 
 ## Available Levels
 
-| Level    | Shows             | Use Case                   |
-| -------- | ----------------- | -------------------------- |
-| `silent` | Nothing           | CI/CD pipelines, scripting |
-| `error`  | Errors only       | Minimal output             |
-| `warn`   | Warnings + errors | Standard CI/CD             |
-| `info`   | All messages      | Development (default)      |
+| Level | Shows | Use Case |
+|-------|-------|----------|
+| `silent` | Nothing | CI/CD pipelines, scripting |
+| `error` | Errors only | Minimal output |
+| `warn` | Warnings + errors | Standard CI/CD |
+| `info` | All messages | Development (default) |
 
 ## Common Patterns
 
@@ -58,8 +57,8 @@ export default defineConfig({
 ```ts
 export default defineConfig({
   entry: ['src/index.ts'],
-  logLevel: 'error', // Only show errors in CI
-});
+  logLevel: 'error',  // Only show errors in CI
+})
 ```
 
 ### Scripting
@@ -67,22 +66,20 @@ export default defineConfig({
 ```ts
 export default defineConfig({
   entry: ['src/index.ts'],
-  logLevel: 'silent', // No output for automation
-});
+  logLevel: 'silent',  // No output for automation
+})
 ```
 
 ## Fail on Warnings
 
-The `failOnWarn` option controls whether warnings cause the build to exit with a
-non-zero code. Defaults to `'ci-only'` — warnings fail the build in CI but not
-locally.
+The `failOnWarn` option controls whether warnings cause the build to exit with a non-zero code. Defaults to `'ci-only'` — warnings fail the build in CI but not locally.
 
 ```ts
 export default defineConfig({
   failOnWarn: 'ci-only', // Default: fail on warnings only in CI
   // failOnWarn: true,   // Always fail on warnings
   // failOnWarn: false,  // Never fail on warnings
-});
+})
 ```
 
 See [CI Environment](advanced-ci.md) for more about CI-aware options.

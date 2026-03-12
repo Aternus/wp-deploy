@@ -1,15 +1,11 @@
 ---
 name: tsdown
-description:
-  Bundle TypeScript and JavaScript libraries with blazing-fast speed powered by
-  Rolldown. Use when building libraries, generating type declarations, bundling
-  for multiple formats, or migrating from tsup.
+description: Bundle TypeScript and JavaScript libraries with blazing-fast speed powered by Rolldown. Use when building libraries, generating type declarations, bundling for multiple formats, or migrating from tsup.
 ---
 
 # tsdown - The Elegant Library Bundler
 
-Blazing-fast bundler for TypeScript/JavaScript libraries powered by Rolldown and
-Oxc.
+Blazing-fast bundler for TypeScript/JavaScript libraries powered by Rolldown and Oxc.
 
 ## When to Use
 
@@ -42,73 +38,73 @@ npx tsdown-migrate
 ## Basic Configuration
 
 ```ts
-import { defineConfig } from 'tsdown';
+import { defineConfig } from 'tsdown'
 
 export default defineConfig({
   entry: ['./src/index.ts'],
   format: ['esm', 'cjs'],
   dts: true,
   clean: true,
-});
+})
 ```
 
 ## Core References
 
-| Topic              | Description                                       | Reference                                                            |
-| ------------------ | ------------------------------------------------- | -------------------------------------------------------------------- |
-| Getting Started    | Installation, first bundle, CLI basics            | [guide-getting-started](references/guide-getting-started.md)         |
-| Configuration File | Config file formats, multiple configs, workspace  | [option-config-file](references/option-config-file.md)               |
-| CLI Reference      | All CLI commands and options                      | [reference-cli](references/reference-cli.md)                         |
-| Migrate from tsup  | Migration guide and compatibility notes           | [guide-migrate-from-tsup](references/guide-migrate-from-tsup.md)     |
-| Plugins            | Rolldown, Rollup, Unplugin support                | [advanced-plugins](references/advanced-plugins.md)                   |
-| Hooks              | Lifecycle hooks for custom logic                  | [advanced-hooks](references/advanced-hooks.md)                       |
-| Programmatic API   | Build from Node.js scripts                        | [advanced-programmatic](references/advanced-programmatic.md)         |
-| Rolldown Options   | Pass options directly to Rolldown                 | [advanced-rolldown-options](references/advanced-rolldown-options.md) |
-| CI Environment     | CI detection, `'ci-only'` / `'local-only'` values | [advanced-ci](references/advanced-ci.md)                             |
+| Topic | Description | Reference |
+|-------|-------------|-----------|
+| Getting Started | Installation, first bundle, CLI basics | [guide-getting-started](references/guide-getting-started.md) |
+| Configuration File | Config file formats, multiple configs, workspace | [option-config-file](references/option-config-file.md) |
+| CLI Reference | All CLI commands and options | [reference-cli](references/reference-cli.md) |
+| Migrate from tsup | Migration guide and compatibility notes | [guide-migrate-from-tsup](references/guide-migrate-from-tsup.md) |
+| Plugins | Rolldown, Rollup, Unplugin support | [advanced-plugins](references/advanced-plugins.md) |
+| Hooks | Lifecycle hooks for custom logic | [advanced-hooks](references/advanced-hooks.md) |
+| Programmatic API | Build from Node.js scripts | [advanced-programmatic](references/advanced-programmatic.md) |
+| Rolldown Options | Pass options directly to Rolldown | [advanced-rolldown-options](references/advanced-rolldown-options.md) |
+| CI Environment | CI detection, `'ci-only'` / `'local-only'` values | [advanced-ci](references/advanced-ci.md) |
 
 ## Build Options
 
-| Option             | Usage                                                   | Reference                                                        |
-| ------------------ | ------------------------------------------------------- | ---------------------------------------------------------------- |
-| Entry points       | `entry: ['src/*.ts', '!**/*.test.ts']`                  | [option-entry](references/option-entry.md)                       |
-| Output formats     | `format: ['esm', 'cjs', 'iife', 'umd']`                 | [option-output-format](references/option-output-format.md)       |
-| Output directory   | `outDir: 'dist'`, `outExtensions`                       | [option-output-directory](references/option-output-directory.md) |
-| Type declarations  | `dts: true`, `dts: { sourcemap, compilerOptions, vue }` | [option-dts](references/option-dts.md)                           |
-| Target environment | `target: 'es2020'`, `target: 'esnext'`                  | [option-target](references/option-target.md)                     |
-| Platform           | `platform: 'node'`, `platform: 'browser'`               | [option-platform](references/option-platform.md)                 |
-| Tree shaking       | `treeshake: true`, custom options                       | [option-tree-shaking](references/option-tree-shaking.md)         |
-| Minification       | `minify: true`, `minify: 'dce-only'`                    | [option-minification](references/option-minification.md)         |
-| Source maps        | `sourcemap: true`, `'inline'`, `'hidden'`               | [option-sourcemap](references/option-sourcemap.md)               |
-| Watch mode         | `watch: true`, watch options                            | [option-watch-mode](references/option-watch-mode.md)             |
-| Cleaning           | `clean: true`, clean patterns                           | [option-cleaning](references/option-cleaning.md)                 |
-| Log level          | `logLevel: 'silent'`, `failOnWarn: 'ci-only'`           | [option-log-level](references/option-log-level.md)               |
+| Option | Usage | Reference |
+|--------|-------|-----------|
+| Entry points | `entry: ['src/*.ts', '!**/*.test.ts']` | [option-entry](references/option-entry.md) |
+| Output formats | `format: ['esm', 'cjs', 'iife', 'umd']` | [option-output-format](references/option-output-format.md) |
+| Output directory | `outDir: 'dist'`, `outExtensions` | [option-output-directory](references/option-output-directory.md) |
+| Type declarations | `dts: true`, `dts: { sourcemap, compilerOptions, vue }` | [option-dts](references/option-dts.md) |
+| Target environment | `target: 'es2020'`, `target: 'esnext'` | [option-target](references/option-target.md) |
+| Platform | `platform: 'node'`, `platform: 'browser'` | [option-platform](references/option-platform.md) |
+| Tree shaking | `treeshake: true`, custom options | [option-tree-shaking](references/option-tree-shaking.md) |
+| Minification | `minify: true`, `minify: 'dce-only'` | [option-minification](references/option-minification.md) |
+| Source maps | `sourcemap: true`, `'inline'`, `'hidden'` | [option-sourcemap](references/option-sourcemap.md) |
+| Watch mode | `watch: true`, watch options | [option-watch-mode](references/option-watch-mode.md) |
+| Cleaning | `clean: true`, clean patterns | [option-cleaning](references/option-cleaning.md) |
+| Log level | `logLevel: 'silent'`, `failOnWarn: 'ci-only'` | [option-log-level](references/option-log-level.md) |
 
 ## Dependency Handling
 
-| Feature       | Usage                                     | Reference                                                |
-| ------------- | ----------------------------------------- | -------------------------------------------------------- |
-| External deps | `external: ['react', /^@myorg\//]`        | [option-dependencies](references/option-dependencies.md) |
-| Inline deps   | `noExternal: ['dep-to-bundle']`           | [option-dependencies](references/option-dependencies.md) |
+| Feature | Usage | Reference |
+|---------|-------|-----------|
+| External deps | `external: ['react', /^@myorg\//]` | [option-dependencies](references/option-dependencies.md) |
+| Inline deps | `noExternal: ['dep-to-bundle']` | [option-dependencies](references/option-dependencies.md) |
 | Auto external | Automatic peer/dependency externalization | [option-dependencies](references/option-dependencies.md) |
 
 ## Output Enhancement
 
-| Feature            | Usage                                            | Reference                                                      |
-| ------------------ | ------------------------------------------------ | -------------------------------------------------------------- |
-| Shims              | `shims: true` - Add ESM/CJS compatibility        | [option-shims](references/option-shims.md)                     |
-| CJS default        | `cjsDefault: true` (default) / `false`           | [option-cjs-default](references/option-cjs-default.md)         |
-| Package exports    | `exports: true` - Auto-generate exports field    | [option-package-exports](references/option-package-exports.md) |
-| CSS handling       | **[experimental]** Still in development          | [option-css](references/option-css.md)                         |
-| Unbundle mode      | `unbundle: true` - Preserve directory structure  | [option-unbundle](references/option-unbundle.md)               |
-| Package validation | `publint: true`, `attw: true` - Validate package | [option-lint](references/option-lint.md)                       |
+| Feature | Usage | Reference |
+|---------|-------|-----------|
+| Shims | `shims: true` - Add ESM/CJS compatibility | [option-shims](references/option-shims.md) |
+| CJS default | `cjsDefault: true` (default) / `false` | [option-cjs-default](references/option-cjs-default.md) |
+| Package exports | `exports: true` - Auto-generate exports field | [option-package-exports](references/option-package-exports.md) |
+| CSS handling | **[experimental]** Still in development | [option-css](references/option-css.md) |
+| Unbundle mode | `unbundle: true` - Preserve directory structure | [option-unbundle](references/option-unbundle.md) |
+| Package validation | `publint: true`, `attw: true` - Validate package | [option-lint](references/option-lint.md) |
 
 ## Framework & Runtime Support
 
-| Framework | Guide                                          | Reference                                  |
-| --------- | ---------------------------------------------- | ------------------------------------------ |
-| React     | JSX transform, Fast Refresh                    | [recipe-react](references/recipe-react.md) |
-| Vue       | SFC support, JSX                               | [recipe-vue](references/recipe-vue.md)     |
-| WASM      | WebAssembly modules via `rolldown-plugin-wasm` | [recipe-wasm](references/recipe-wasm.md)   |
+| Framework | Guide | Reference |
+|-----------|-------|-----------|
+| React | JSX transform, Fast Refresh | [recipe-react](references/recipe-react.md) |
+| Vue | SFC support, JSX | [recipe-vue](references/recipe-vue.md) |
+| WASM | WebAssembly modules via `rolldown-plugin-wasm` | [recipe-wasm](references/recipe-wasm.md) |
 
 ## Common Patterns
 
@@ -120,7 +116,7 @@ export default defineConfig({
   format: ['esm', 'cjs'],
   dts: true,
   clean: true,
-});
+})
 ```
 
 ### Multiple Entry Points
@@ -134,7 +130,7 @@ export default defineConfig({
   },
   format: ['esm', 'cjs'],
   dts: true,
-});
+})
 ```
 
 ### Browser Library (IIFE/UMD)
@@ -146,7 +142,7 @@ export default defineConfig({
   globalName: 'MyLib',
   platform: 'browser',
   minify: true,
-});
+})
 ```
 
 ### React Component Library
@@ -160,7 +156,7 @@ export default defineConfig({
   plugins: [
     // React Fast Refresh support
   ],
-});
+})
 ```
 
 ### Preserve Directory Structure
@@ -171,7 +167,7 @@ export default defineConfig({
   unbundle: true, // Preserve file structure
   format: ['esm'],
   dts: true,
-});
+})
 ```
 
 ### CI-Aware Configuration
@@ -184,19 +180,19 @@ export default defineConfig({
   failOnWarn: 'ci-only',
   publint: 'ci-only',
   attw: 'ci-only',
-});
+})
 ```
 
 ### WASM Support
 
 ```ts
-import { wasm } from 'rolldown-plugin-wasm';
-import { defineConfig } from 'tsdown';
+import { wasm } from 'rolldown-plugin-wasm'
+import { defineConfig } from 'tsdown'
 
 export default defineConfig({
   entry: ['src/index.ts'],
   plugins: [wasm()],
-});
+})
 ```
 
 ### Advanced with Hooks
@@ -208,13 +204,13 @@ export default defineConfig({
   dts: true,
   hooks: {
     'build:before': async (context) => {
-      console.log('Building...');
+      console.log('Building...')
     },
     'build:done': async (context) => {
-      console.log('Build complete!');
+      console.log('Build complete!')
     },
   },
-});
+})
 ```
 
 ## Configuration Features
@@ -235,7 +231,7 @@ export default defineConfig([
     format: ['esm'],
     platform: 'node',
   },
-]);
+])
 ```
 
 ### Conditional Config
@@ -244,14 +240,14 @@ Use functions for dynamic configuration:
 
 ```ts
 export default defineConfig((options) => {
-  const isDev = options.watch;
+  const isDev = options.watch
   return {
     entry: ['src/index.ts'],
     format: ['esm', 'cjs'],
     minify: !isDev,
     sourcemap: isDev,
-  };
-});
+  }
+})
 ```
 
 ### Workspace/Monorepo
@@ -264,7 +260,7 @@ export default defineConfig({
   entry: ['src/index.ts'],
   format: ['esm', 'cjs'],
   dts: true,
-});
+})
 ```
 
 ## CLI Quick Reference
@@ -296,65 +292,43 @@ tsdown --clean                 # Clean output directory
 ## Best Practices
 
 1. **Always generate type declarations** for TypeScript libraries:
-
    ```ts
-   {
-     dts: true;
-   }
+   { dts: true }
    ```
 
 2. **Externalize dependencies** to avoid bundling unnecessary code:
-
    ```ts
-   {
-     external: [/^react/, /^@myorg\//];
-   }
+   { external: [/^react/, /^@myorg\//] }
    ```
 
 3. **Use tree shaking** for optimal bundle size:
-
    ```ts
-   {
-     treeshake: true;
-   }
+   { treeshake: true }
    ```
 
 4. **Enable minification** for production builds:
-
    ```ts
-   {
-     minify: true;
-   }
+   { minify: true }
    ```
 
 5. **Add shims** for better ESM/CJS compatibility:
-
    ```ts
-   {
-     shims: true;
-   } // Adds __dirname, __filename, etc.
+   { shims: true }  // Adds __dirname, __filename, etc.
    ```
 
 6. **Auto-generate package.json exports**:
-
    ```ts
-   {
-     exports: true;
-   } // Creates proper exports field
+   { exports: true }  // Creates proper exports field
    ```
 
 7. **Use watch mode** during development:
-
    ```bash
    tsdown --watch
    ```
 
 8. **Preserve structure** for utilities with many files:
-
    ```ts
-   {
-     unbundle: true;
-   } // Keep directory structure
+   { unbundle: true }  // Keep directory structure
    ```
 
 9. **Validate packages** in CI before publishing:

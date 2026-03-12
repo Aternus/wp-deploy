@@ -4,11 +4,9 @@ Compress code to reduce bundle size.
 
 ## Overview
 
-Minification removes unnecessary characters (whitespace, comments) and optimizes
-code for production, reducing bundle size and improving load times.
+Minification removes unnecessary characters (whitespace, comments) and optimizes code for production, reducing bundle size and improving load times.
 
-**Note:** Uses [Oxc minifier](https://oxc.rs/docs/contribute/minifier)
-internally. The minifier is currently in alpha.
+**Note:** Uses [Oxc minifier](https://oxc.rs/docs/contribute/minifier) internally. The minifier is currently in alpha.
 
 ## Type
 
@@ -33,8 +31,7 @@ tsdown --minify
 tsdown --no-minify
 ```
 
-**Note:** The CLI `--minify` flag is a boolean toggle. For `'dce-only'` mode or
-advanced options, use the config file.
+**Note:** The CLI `--minify` flag is a boolean toggle. For `'dce-only'` mode or advanced options, use the config file.
 
 ### Config File
 
@@ -42,7 +39,7 @@ advanced options, use the config file.
 export default defineConfig({
   entry: ['src/index.ts'],
   minify: true,
-});
+})
 ```
 
 ### DCE-Only Mode
@@ -53,7 +50,7 @@ Remove dead code without full minification (keeps readable output):
 export default defineConfig({
   entry: ['src/index.ts'],
   minify: 'dce-only',
-});
+})
 ```
 
 ## Example Output
@@ -62,25 +59,21 @@ export default defineConfig({
 
 ```js
 // dist/index.mjs
-const x = 1;
+const x = 1
 
 function hello(x$1) {
-  console.log('Hello World');
-  console.log(x$1);
+  console.log('Hello World')
+  console.log(x$1)
 }
 
-hello(x);
+hello(x)
 ```
 
 ### With Minification
 
 ```js
 // dist/index.mjs
-const e = 1;
-function t(e) {
-  (console.log(`Hello World`), console.log(e));
-}
-t(e);
+const e=1;function t(e){console.log(`Hello World`),console.log(e)}t(e);
 ```
 
 ## Common Patterns
@@ -93,7 +86,7 @@ export default defineConfig({
   format: ['esm', 'cjs'],
   minify: true,
   clean: true,
-});
+})
 ```
 
 ### Conditional Minification
@@ -102,8 +95,8 @@ export default defineConfig({
 export default defineConfig((options) => ({
   entry: ['src/index.ts'],
   format: ['esm'],
-  minify: !options.watch, // Only minify in production
-}));
+  minify: !options.watch,  // Only minify in production
+}))
 ```
 
 ### Browser Library
@@ -115,7 +108,7 @@ export default defineConfig({
   platform: 'browser',
   globalName: 'MyLib',
   minify: true,
-});
+})
 ```
 
 ### Multiple Builds
@@ -136,7 +129,7 @@ export default defineConfig([
     minify: true,
     outDir: 'dist/prod',
   },
-]);
+])
 ```
 
 ## CLI Examples

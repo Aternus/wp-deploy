@@ -4,8 +4,7 @@ Configure the output directory for bundled files.
 
 ## Overview
 
-By default, tsdown outputs bundled files to the `dist` directory. You can
-customize this location using the `outDir` option.
+By default, tsdown outputs bundled files to the `dist` directory. You can customize this location using the `outDir` option.
 
 ## Basic Usage
 
@@ -26,7 +25,7 @@ tsdown -d lib
 export default defineConfig({
   entry: ['src/index.ts'],
   outDir: 'build',
-});
+})
 ```
 
 ## Common Patterns
@@ -37,13 +36,12 @@ export default defineConfig({
 export default defineConfig({
   entry: ['src/index.ts'],
   format: ['esm', 'cjs'],
-  outDir: 'dist', // Default
+  outDir: 'dist',  // Default
   dts: true,
-});
+})
 ```
 
 **Output:**
-
 ```
 dist/
 ├── index.mjs
@@ -65,11 +63,10 @@ export default defineConfig([
     format: ['cjs'],
     outDir: 'dist/cjs',
   },
-]);
+])
 ```
 
 **Output:**
-
 ```
 dist/
 ├── esm/
@@ -83,9 +80,9 @@ dist/
 ```ts
 export default defineConfig({
   entry: ['src/index.ts'],
-  outDir: 'lib', // Custom directory
+  outDir: 'lib',  // Custom directory
   clean: true,
-});
+})
 ```
 
 ### Build to Root
@@ -93,13 +90,12 @@ export default defineConfig({
 ```ts
 export default defineConfig({
   entry: ['src/index.ts'],
-  outDir: '.', // Output to project root (not recommended)
-  clean: false, // Don't clean root!
-});
+  outDir: '.',  // Output to project root (not recommended)
+  clean: false,  // Don't clean root!
+})
 ```
 
-**Warning:** Be careful when outputting to root to avoid deleting important
-files.
+**Warning:** Be careful when outputting to root to avoid deleting important files.
 
 ## Output Extensions
 
@@ -115,19 +111,19 @@ export default defineConfig({
   outExtensions({ format }) {
     return {
       js: format === 'esm' ? '.mjs' : '.cjs',
-    };
+    }
   },
-});
+})
 ```
 
 ### Default Extensions
 
 | Format | Default Extension | With `type: "module"` |
-| ------ | ----------------- | --------------------- |
-| `esm`  | `.mjs`            | `.js`                 |
-| `cjs`  | `.cjs`            | `.js`                 |
-| `iife` | `.global.js`      | `.global.js`          |
-| `umd`  | `.umd.js`         | `.umd.js`             |
+|--------|-------------------|----------------------|
+| `esm` | `.mjs` | `.js` |
+| `cjs` | `.cjs` | `.js` |
+| `iife` | `.global.js` | `.global.js` |
+| `umd` | `.umd.js` | `.umd.js` |
 
 ### ESM with .js Extension
 
@@ -136,7 +132,7 @@ export default defineConfig({
   entry: ['src/index.ts'],
   format: ['esm'],
   outExtensions: () => ({ js: '.js' }),
-});
+})
 ```
 
 Requires `"type": "module"` in package.json.
@@ -154,11 +150,10 @@ export default defineConfig({
     utils: 'src/utils.ts',
   },
   outDir: 'dist',
-});
+})
 ```
 
 **Output:**
-
 ```
 dist/
 ├── index.mjs
@@ -171,12 +166,11 @@ dist/
 export default defineConfig({
   entry: ['src/**/*.ts', '!**/*.test.ts'],
   outDir: 'dist',
-  unbundle: true, // Preserve structure
-});
+  unbundle: true,  // Preserve structure
+})
 ```
 
 **Output:**
-
 ```
 dist/
 ├── index.mjs
@@ -195,14 +189,14 @@ export default defineConfig([
   {
     entry: ['src/index.ts'],
     outDir: 'dist',
-    clean: true, // Clean first
+    clean: true,  // Clean first
   },
   {
     entry: ['src/cli.ts'],
     outDir: 'dist',
-    clean: false, // Don't clean again
+    clean: false,  // Don't clean again
   },
-]);
+])
 ```
 
 ### Different Output Directories
@@ -219,7 +213,7 @@ export default defineConfig([
     format: ['esm'],
     outDir: 'dist/bin',
   },
-]);
+])
 ```
 
 ## CLI Examples

@@ -4,13 +4,11 @@ Centralize and manage build settings with a configuration file.
 
 ## Overview
 
-tsdown searches for config files automatically in the current directory and
-parent directories.
+tsdown searches for config files automatically in the current directory and parent directories.
 
 ## Supported File Names
 
 tsdown looks for these files (in order):
-
 - `tsdown.config.ts`
 - `tsdown.config.mts`
 - `tsdown.config.cts`
@@ -27,14 +25,14 @@ tsdown looks for these files (in order):
 
 ```ts
 // tsdown.config.ts
-import { defineConfig } from 'tsdown';
+import { defineConfig } from 'tsdown'
 
 export default defineConfig({
   entry: ['src/index.ts'],
   format: ['esm', 'cjs'],
   dts: true,
   clean: true,
-});
+})
 ```
 
 ### JavaScript Config
@@ -45,7 +43,7 @@ export default {
   entry: ['src/index.ts'],
   format: ['esm', 'cjs'],
   dts: true,
-};
+}
 ```
 
 ### JSON Config
@@ -92,7 +90,7 @@ export default defineConfig([
     globalName: 'MyLib',
     minify: true,
   },
-]);
+])
 ```
 
 Each configuration runs as a separate build.
@@ -103,7 +101,7 @@ Use a function for conditional config:
 
 ```ts
 export default defineConfig((options) => {
-  const isDev = options.watch;
+  const isDev = options.watch
 
   return {
     entry: ['src/index.ts'],
@@ -111,12 +109,11 @@ export default defineConfig((options) => {
     minify: !isDev,
     sourcemap: isDev,
     clean: !isDev,
-  };
-});
+  }
+})
 ```
 
 Available options:
-
 - `watch` - Whether watch mode is enabled
 - Other CLI flags passed to config
 
@@ -148,8 +145,7 @@ Uses [unrun](https://gugustinette.github.io/unrun/) library for loading:
 tsdown --config-loader unrun
 ```
 
-**Tip:** Use `unrun` loader if you need to load TypeScript configs without file
-extensions in Node.js.
+**Tip:** Use `unrun` loader if you need to load TypeScript configs without file extensions in Node.js.
 
 ## Custom Config Path
 
@@ -181,8 +177,7 @@ tsdown --from-vite
 tsdown --from-vite vitest
 ```
 
-**Note:** Only specific options like `resolve` and `plugins` are reused. Test
-thoroughly as this feature is experimental.
+**Note:** Only specific options like `resolve` and `plugins` are reused. Test thoroughly as this feature is experimental.
 
 ## Workspace / Monorepo
 
@@ -194,11 +189,10 @@ export default defineConfig({
   entry: ['src/index.ts'],
   format: ['esm', 'cjs'],
   dts: true,
-});
+})
 ```
 
-Each package directory matching the glob pattern will be built with the same
-configuration.
+Each package directory matching the glob pattern will be built with the same configuration.
 
 ## Common Patterns
 
@@ -220,7 +214,7 @@ export default defineConfig([
     platform: 'browser',
     globalName: 'MyLib',
   },
-]);
+])
 ```
 
 ### Development vs Production
@@ -232,7 +226,7 @@ export default defineConfig((options) => ({
   minify: !options.watch,
   sourcemap: options.watch ? true : false,
   clean: !options.watch,
-}));
+}))
 ```
 
 ### Monorepo Root Config
@@ -246,7 +240,7 @@ export default defineConfig({
   dts: true,
   clean: true,
   // Shared config for all packages
-});
+})
 ```
 
 ### Per-Package Override
@@ -257,7 +251,7 @@ export default defineConfig({
   entry: ['src/index.ts'],
   format: ['esm'], // Override: only ESM
   platform: 'browser', // Override: browser only
-});
+})
 ```
 
 ## Config Precedence

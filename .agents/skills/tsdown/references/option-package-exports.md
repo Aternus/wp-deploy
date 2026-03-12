@@ -4,8 +4,7 @@ Automatically generate package.json exports field from build output.
 
 ## Overview
 
-tsdown can automatically infer and generate the `exports`, `main`, `module`, and
-`types` fields in your `package.json` based on your build outputs.
+tsdown can automatically infer and generate the `exports`, `main`, `module`, and `types` fields in your `package.json` based on your build outputs.
 
 **Status:** Experimental - review before publishing.
 
@@ -25,7 +24,7 @@ export default defineConfig({
   format: ['esm', 'cjs'],
   dts: true,
   exports: true,
-});
+})
 ```
 
 ## What Gets Generated
@@ -33,18 +32,16 @@ export default defineConfig({
 ### Single Entry
 
 **Config:**
-
 ```ts
 export default defineConfig({
   entry: ['src/index.ts'],
   format: ['esm', 'cjs'],
   dts: true,
   exports: true,
-});
+})
 ```
 
 **Generated in package.json:**
-
 ```json
 {
   "main": "./dist/index.cjs",
@@ -63,7 +60,6 @@ export default defineConfig({
 ### Multiple Entries
 
 **Config:**
-
 ```ts
 export default defineConfig({
   entry: {
@@ -73,11 +69,10 @@ export default defineConfig({
   format: ['esm', 'cjs'],
   dts: true,
   exports: true,
-});
+})
 ```
 
 **Generated in package.json:**
-
 ```json
 {
   "main": "./dist/index.cjs",
@@ -109,7 +104,7 @@ export default defineConfig({
   exports: {
     all: true,
   },
-});
+})
 ```
 
 **Result:** All `.mjs`, `.cjs`, and `.d.ts` files will be added to exports.
@@ -127,15 +122,14 @@ export default defineConfig({
   exports: {
     devExports: true,
   },
-});
+})
 ```
 
 **Generated:**
-
 ```json
 {
   "exports": {
-    ".": "./src/index.ts" // Points to source
+    ".": "./src/index.ts"  // Points to source
   },
   "publishConfig": {
     "exports": {
@@ -159,11 +153,10 @@ export default defineConfig({
   exports: {
     devExports: 'development',
   },
-});
+})
 ```
 
 **Generated:**
-
 ```json
 {
   "exports": {
@@ -177,7 +170,6 @@ export default defineConfig({
 ```
 
 **Use with TypeScript customConditions:**
-
 ```json
 // tsconfig.json
 {
@@ -197,15 +189,15 @@ export default defineConfig({
   exports: {
     customExports(pkg, context) {
       // Add custom export
-      pkg['./foo'] = './dist/foo.js';
+      pkg['./foo'] = './dist/foo.js'
 
       // Add package.json export
-      pkg['./package.json'] = './package.json';
+      pkg['./package.json'] = './package.json'
 
-      return pkg;
+      return pkg
     },
   },
-});
+})
 ```
 
 ## Common Patterns
@@ -219,7 +211,7 @@ export default defineConfig({
   dts: true,
   exports: true,
   clean: true,
-});
+})
 ```
 
 ### Multiple Exports with Dev Mode
@@ -234,10 +226,10 @@ export default defineConfig({
   format: ['esm', 'cjs'],
   dts: true,
   exports: {
-    all: false, // Only entries
+    all: false,  // Only entries
     devExports: 'development',
   },
-});
+})
 ```
 
 ### Monorepo Package
@@ -248,8 +240,8 @@ export default defineConfig({
   entry: ['src/index.ts'],
   format: ['esm', 'cjs'],
   dts: true,
-  exports: true, // Generate for each package
-});
+  exports: true,  // Generate for each package
+})
 ```
 
 ## Validation
@@ -267,8 +259,8 @@ Or in config:
 ```ts
 export default defineConfig({
   exports: true,
-  publint: true, // Validate exports
-});
+  publint: true,  // Validate exports
+})
 ```
 
 ## Tips

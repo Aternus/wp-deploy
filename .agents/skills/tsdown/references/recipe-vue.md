@@ -4,8 +4,7 @@ Build Vue component libraries with tsdown.
 
 ## Overview
 
-tsdown provides first-class support for Vue libraries through integration with
-`unplugin-vue` and `rolldown-plugin-dts` for type generation.
+tsdown provides first-class support for Vue libraries through integration with `unplugin-vue` and `rolldown-plugin-dts` for type generation.
 
 ## Quick Start
 
@@ -27,19 +26,21 @@ pnpm add -D unplugin-vue vue-tsc
 
 ```ts
 // tsdown.config.ts
-import { defineConfig } from 'tsdown';
-import Vue from 'unplugin-vue/rolldown';
+import { defineConfig } from 'tsdown'
+import Vue from 'unplugin-vue/rolldown'
 
 export default defineConfig({
   entry: ['./src/index.ts'],
   format: ['esm', 'cjs'],
   platform: 'neutral',
   external: ['vue'],
-  plugins: [Vue({ isProduction: true })],
+  plugins: [
+    Vue({ isProduction: true }),
+  ],
   dts: {
-    vue: true, // Enable Vue type generation
+    vue: true,  // Enable Vue type generation
   },
-});
+})
 ```
 
 ## How It Works
@@ -47,7 +48,6 @@ export default defineConfig({
 ### unplugin-vue
 
 Compiles `.vue` single-file components:
-
 - Transforms template to render functions
 - Handles scoped styles
 - Processes script setup
@@ -55,7 +55,6 @@ Compiles `.vue` single-file components:
 ### vue-tsc
 
 Generates TypeScript declarations:
-
 - Type-checks Vue components
 - Creates `.d.ts` files
 - Preserves component props types
@@ -106,12 +105,12 @@ defineEmits<{
 
 ```ts
 // src/index.ts
-export { default as Button } from './Button.vue';
-export { default as Input } from './Input.vue';
-export { default as Modal } from './Modal.vue';
+export { default as Button } from './Button.vue'
+export { default as Input } from './Input.vue'
+export { default as Modal } from './Modal.vue'
 
 // Re-export types
-export type { ButtonProps } from './Button.vue';
+export type { ButtonProps } from './Button.vue'
 ```
 
 ## Common Patterns
@@ -136,7 +135,7 @@ export default defineConfig({
     vue: true,
   },
   clean: true,
-});
+})
 ```
 
 ### Multiple Components
@@ -153,20 +152,20 @@ export default defineConfig({
   external: ['vue'],
   plugins: [Vue({ isProduction: true })],
   dts: { vue: true },
-});
+})
 ```
 
 ### With Composition Utilities
 
 ```ts
 // src/composables/useCounter.ts
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export function useCounter(initial = 0) {
-  const count = ref(initial);
-  const increment = () => count.value++;
-  const decrement = () => count.value--;
-  return { count, increment, decrement };
+  const count = ref(initial)
+  const increment = () => count.value++
+  const decrement = () => count.value--
+  return { count, increment, decrement }
 }
 ```
 
@@ -177,7 +176,7 @@ export default defineConfig({
   external: ['vue'],
   plugins: [Vue({ isProduction: true })],
   dts: { vue: true },
-});
+})
 ```
 
 ### TypeScript Configuration
@@ -216,7 +215,7 @@ export default defineConfig({
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
-    }
+    },
   },
   "files": ["dist"],
   "peerDependencies": {
@@ -239,8 +238,8 @@ export default defineConfig({
 Some Vite Vue plugins may work:
 
 ```ts
-import Components from 'unplugin-vue-components/rolldown';
-import Vue from 'unplugin-vue/rolldown';
+import Vue from 'unplugin-vue/rolldown'
+import Components from 'unplugin-vue-components/rolldown'
 
 export default defineConfig({
   entry: ['src/index.ts'],
@@ -252,7 +251,7 @@ export default defineConfig({
     }),
   ],
   dts: { vue: true },
-});
+})
 ```
 
 ### JSX Support
@@ -277,7 +276,7 @@ export default defineConfig({
     },
   },
   dts: { vue: true },
-});
+})
 ```
 
 ### Monorepo Vue Packages
@@ -290,7 +289,7 @@ export default defineConfig({
   external: ['vue', /^@mycompany\//],
   plugins: [Vue({ isProduction: true })],
   dts: { vue: true },
-});
+})
 ```
 
 ## Plugin Options
@@ -312,7 +311,7 @@ Vue({
       isCustomElement: (tag) => tag.startsWith('custom-'),
     },
   },
-});
+})
 ```
 
 ## Tips
@@ -329,23 +328,18 @@ Vue({
 ### Type Generation Fails
 
 Ensure vue-tsc is installed:
-
 ```bash
 pnpm add -D vue-tsc
 ```
 
 Enable in config:
-
 ```ts
-dts: {
-  vue: true;
-}
+dts: { vue: true }
 ```
 
 ### Component Types Missing
 
 Check TypeScript config:
-
 ```json
 {
   "compilerOptions": {
@@ -358,15 +352,13 @@ Check TypeScript config:
 ### Vue Not Externalized
 
 Add to external:
-
 ```ts
-external: ['vue'];
+external: ['vue']
 ```
 
 ### SFC Compilation Errors
 
 Check unplugin-vue version:
-
 ```bash
 pnpm add -D unplugin-vue@latest
 ```

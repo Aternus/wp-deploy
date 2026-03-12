@@ -4,9 +4,7 @@ Build React component libraries with tsdown.
 
 ## Overview
 
-tsdown provides first-class support for React libraries. Rolldown natively
-supports JSX/TSX, so no additional plugins are required for basic React
-components.
+tsdown provides first-class support for React libraries. Rolldown natively supports JSX/TSX, so no additional plugins are required for basic React components.
 
 ## Quick Start
 
@@ -32,35 +30,32 @@ export default defineConfig({
   platform: 'neutral',
   external: ['react', 'react-dom'],
   dts: true,
-});
+})
 ```
 
 ### Component Example
 
 ```tsx
 // src/MyButton.tsx
-import React from 'react';
+import React from 'react'
 
 interface MyButtonProps {
-  type?: 'primary' | 'secondary';
-  onClick?: () => void;
+  type?: 'primary' | 'secondary'
+  onClick?: () => void
 }
 
-export const MyButton: React.FC<MyButtonProps> = ({
-  type = 'primary',
-  onClick,
-}) => {
+export const MyButton: React.FC<MyButtonProps> = ({ type = 'primary', onClick }) => {
   return (
     <button className={`btn btn-${type}`} onClick={onClick}>
       Click me
     </button>
-  );
-};
+  )
+}
 ```
 
 ```ts
 // src/index.ts
-export { MyButton } from './MyButton';
+export { MyButton } from './MyButton'
 ```
 
 ## JSX Transform
@@ -73,11 +68,10 @@ Modern JSX transform (React 17+):
 export default defineConfig({
   entry: ['src/index.tsx'],
   // Automatic JSX is default
-});
+})
 ```
 
 **Characteristics:**
-
 - No `import React` needed
 - Smaller bundle size
 - React 17+ required
@@ -91,14 +85,13 @@ export default defineConfig({
   entry: ['src/index.tsx'],
   inputOptions: {
     transform: {
-      jsx: 'react', // Classic transform
+      jsx: 'react',  // Classic transform
     },
   },
-});
+})
 ```
 
 **Characteristics:**
-
 - Requires `import React from 'react'`
 - Compatible with older React versions
 
@@ -115,7 +108,7 @@ pnpm add -D @rollup/plugin-babel babel-plugin-react-compiler
 ### Configure
 
 ```ts
-import pluginBabel from '@rollup/plugin-babel';
+import pluginBabel from '@rollup/plugin-babel'
 
 export default defineConfig({
   entry: ['src/index.tsx'],
@@ -133,7 +126,7 @@ export default defineConfig({
     }),
   ],
   dts: true,
-});
+})
 ```
 
 ## Common Patterns
@@ -148,11 +141,11 @@ export default defineConfig({
   external: [
     'react',
     'react-dom',
-    /^react\//, // react/jsx-runtime, etc.
+    /^react\//,  // react/jsx-runtime, etc.
   ],
   dts: true,
   clean: true,
-});
+})
 ```
 
 ### Multiple Components
@@ -168,7 +161,7 @@ export default defineConfig({
   format: ['esm', 'cjs'],
   external: ['react', 'react-dom'],
   dts: true,
-});
+})
 ```
 
 ### Hooks Library
@@ -178,10 +171,10 @@ export default defineConfig({
   entry: ['src/index.ts'],
   format: ['esm', 'cjs'],
   platform: 'neutral',
-  external: ['react'], // Only React needed
+  external: ['react'],  // Only React needed
   dts: true,
   treeshake: true,
-});
+})
 ```
 
 ### Monorepo React Packages
@@ -194,10 +187,10 @@ export default defineConfig({
   external: [
     'react',
     'react-dom',
-    /^@mycompany\//, // Other workspace packages
+    /^@mycompany\//,  // Other workspace packages
   ],
   dts: true,
-});
+})
 ```
 
 ## TypeScript Configuration
@@ -210,11 +203,11 @@ export default defineConfig({
     "target": "ES2020",
     "module": "ESNext",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "jsx": "react-jsx", // or "react" for classic
+    "jsx": "react-jsx",  // or "react" for classic
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "strict": true,
-    "isolatedDeclarations": true, // Fast DTS generation
+    "isolatedDeclarations": true,  // Fast DTS generation
     "skipLibCheck": true
   },
   "include": ["src"]
@@ -259,7 +252,7 @@ export default defineConfig({
 ### With Fast Refresh (Development)
 
 ```ts
-import react from '@vitejs/plugin-react';
+import react from '@vitejs/plugin-react'
 
 export default defineConfig((options) => ({
   entry: ['src/index.ts'],
@@ -271,7 +264,7 @@ export default defineConfig((options) => ({
         react({ fastRefresh: true }),
       ]
     : [],
-}));
+}))
 ```
 
 ## Tips
@@ -291,7 +284,7 @@ export default defineConfig((options) => ({
 Ensure React is externalized:
 
 ```ts
-external: ['react', 'react-dom', /^react\//];
+external: ['react', 'react-dom', /^react\//]
 ```
 
 ### Type Errors with JSX
@@ -301,7 +294,7 @@ Check `tsconfig.json`:
 ```json
 {
   "compilerOptions": {
-    "jsx": "react-jsx" // or "react"
+    "jsx": "react-jsx"  // or "react"
   }
 }
 ```
@@ -311,7 +304,12 @@ Check `tsconfig.json`:
 Add to external patterns:
 
 ```ts
-external: ['react', 'react-dom', 'react/jsx-runtime', 'react/jsx-dev-runtime'];
+external: [
+  'react',
+  'react-dom',
+  'react/jsx-runtime',
+  'react/jsx-dev-runtime',
+]
 ```
 
 ## Related

@@ -1,23 +1,20 @@
 # CI Environment Support
 
-Automatically detect CI environments and toggle features based on local vs CI
-builds.
+Automatically detect CI environments and toggle features based on local vs CI builds.
 
 ## Overview
 
-tsdown uses the [`is-in-ci`](https://www.npmjs.com/package/is-in-ci) package to
-detect CI environments. This covers GitHub Actions, GitLab CI, Jenkins,
-CircleCI, Travis CI, and more.
+tsdown uses the [`is-in-ci`](https://www.npmjs.com/package/is-in-ci) package to detect CI environments. This covers GitHub Actions, GitLab CI, Jenkins, CircleCI, Travis CI, and more.
 
 ## CI-Aware Values
 
 Several options accept CI-aware string values:
 
-| Value          | Behavior                             |
-| -------------- | ------------------------------------ |
-| `true`         | Always enabled                       |
-| `false`        | Always disabled                      |
-| `'ci-only'`    | Enabled only in CI, disabled locally |
+| Value | Behavior |
+|-------|----------|
+| `true` | Always enabled |
+| `false` | Always disabled |
+| `'ci-only'` | Enabled only in CI, disabled locally |
 | `'local-only'` | Enabled only locally, disabled in CI |
 
 ## Supported Options
@@ -39,10 +36,10 @@ These options accept CI-aware values:
 
 ```ts
 export default defineConfig({
-  dts: 'local-only', // Skip DTS in CI for faster builds
-  publint: 'ci-only', // Only run publint in CI
-  failOnWarn: 'ci-only', // Fail on warnings in CI only (default)
-});
+  dts: 'local-only',        // Skip DTS in CI for faster builds
+  publint: 'ci-only',       // Only run publint in CI
+  failOnWarn: 'ci-only',    // Fail on warnings in CI only (default)
+})
 ```
 
 ### Object Form
@@ -59,7 +56,7 @@ export default defineConfig({
     enabled: 'ci-only',
     profile: 'node16',
   },
-});
+})
 ```
 
 ### Config Function
@@ -70,7 +67,7 @@ The config function receives a `ci` boolean in its context:
 export default defineConfig((_, { ci }) => ({
   minify: ci,
   sourcemap: !ci,
-}));
+}))
 ```
 
 ## Typical CI Configuration
@@ -83,7 +80,7 @@ export default defineConfig({
   failOnWarn: 'ci-only',
   publint: 'ci-only',
   attw: 'ci-only',
-});
+})
 ```
 
 ## Related Options

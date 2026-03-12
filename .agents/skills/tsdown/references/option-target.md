@@ -4,8 +4,7 @@ Configure JavaScript syntax transformations for target environments.
 
 ## Overview
 
-The `target` option controls which JavaScript features are downleveled
-(transformed to older syntax) for compatibility.
+The `target` option controls which JavaScript features are downleveled (transformed to older syntax) for compatibility.
 
 **Important:** Only affects syntax transformations, not runtime polyfills.
 
@@ -24,8 +23,7 @@ tsdown auto-reads from `package.json`:
 
 Automatically sets `target` to `node18.0.0`.
 
-If no `engines.node` field exists, behaves as if `target: false` (no
-transformations).
+If no `engines.node` field exists, behaves as if `target: false` (no transformations).
 
 ## Disabling Transformations
 
@@ -34,17 +32,14 @@ Set to `false` to preserve modern syntax:
 ```ts
 export default defineConfig({
   target: false,
-});
+})
 ```
 
 **Result:**
-
 - No JavaScript downleveling
-- Modern features preserved (optional chaining `?.`, nullish coalescing `??`,
-  etc.)
+- Modern features preserved (optional chaining `?.`, nullish coalescing `??`, etc.)
 
 **Use when:**
-
 - Targeting modern environments
 - Handling transformations elsewhere
 - Building libraries for further processing
@@ -71,7 +66,7 @@ tsdown --no-target
 export default defineConfig({
   entry: ['src/index.ts'],
   target: 'es2020',
-});
+})
 ```
 
 ### Multiple Targets
@@ -80,15 +75,14 @@ export default defineConfig({
 export default defineConfig({
   entry: ['src/index.ts'],
   target: ['chrome100', 'safari15', 'node18'],
-});
+})
 ```
 
 ## Supported Targets
 
 ### ECMAScript Versions
 
-- `es2015`, `es2016`, `es2017`, `es2018`, `es2019`, `es2020`, `es2021`,
-  `es2022`, `es2023`, `esnext`
+- `es2015`, `es2016`, `es2017`, `es2018`, `es2019`, `es2020`, `es2021`, `es2022`, `es2023`, `esnext`
 
 ### Browser Versions
 
@@ -107,7 +101,7 @@ export default defineConfig({
   entry: ['src/index.ts'],
   format: ['esm'],
   target: ['chrome100', 'safari15', 'firefox100'],
-});
+})
 ```
 
 ### Node.js Library
@@ -117,7 +111,7 @@ export default defineConfig({
   entry: ['src/index.ts'],
   format: ['esm', 'cjs'],
   target: 'node18',
-});
+})
 ```
 
 ### Legacy Support
@@ -126,8 +120,8 @@ export default defineConfig({
 export default defineConfig({
   entry: ['src/index.ts'],
   format: ['esm'],
-  target: 'es2015', // Maximum compatibility
-});
+  target: 'es2015',  // Maximum compatibility
+})
 ```
 
 ### Per-Format Targets
@@ -143,7 +137,7 @@ export default defineConfig({
       target: 'node16',
     },
   },
-});
+})
 ```
 
 ## Decorators
@@ -174,8 +168,8 @@ See [oxc issue #9170](https://github.com/oxc-project/oxc/issues/9170).
 export default defineConfig({
   entry: ['src/index.ts'],
   format: ['esm', 'cjs'],
-  target: 'es2020', // Wide compatibility
-});
+  target: 'es2020',  // Wide compatibility
+})
 ```
 
 ### Modern-Only Library
@@ -184,8 +178,8 @@ export default defineConfig({
 export default defineConfig({
   entry: ['src/index.ts'],
   format: ['esm'],
-  target: false, // No transformations
-});
+  target: false,  // No transformations
+})
 ```
 
 ### Browser Component
@@ -196,7 +190,7 @@ export default defineConfig({
   format: ['esm'],
   target: ['chrome100', 'safari15', 'firefox100'],
   platform: 'browser',
-});
+})
 ```
 
 ## Tips
@@ -205,7 +199,7 @@ export default defineConfig({
 2. **Use `false`** for modern-only builds
 3. **Specify multiple targets** for broader compatibility
 4. **Use legacy decorators** with `experimentalDecorators`
-5. **Test output** in target environments
+6. **Test output** in target environments
 
 ## Related Options
 

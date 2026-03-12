@@ -4,20 +4,17 @@ Complete reference for tsdown command-line interface.
 
 ## Overview
 
-All CLI flags can also be set in the config file. CLI flags override config file
-options.
+All CLI flags can also be set in the config file. CLI flags override config file options.
 
 ## Flag Patterns
 
 CLI flag mapping rules:
-
 - `--foo` sets `foo: true`
 - `--no-foo` sets `foo: false`
 - `--foo.bar` sets `foo: { bar: true }`
 - `--format esm --format cjs` sets `format: ['esm', 'cjs']`
 
-CLI flags support both camelCase and kebab-case. For example, `--outDir` and
-`--out-dir` are equivalent.
+CLI flags support both camelCase and kebab-case. For example, `--outDir` and `--out-dir` are equivalent.
 
 ## Basic Commands
 
