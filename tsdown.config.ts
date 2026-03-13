@@ -2,5 +2,8 @@ import { defineConfig } from 'tsdown';
 
 export default defineConfig({
   exports: true,
-  entry: ['./src/index.ts'],
+  entry: {
+    index: './src/index.ts',
+    cli: './src/index.ts',
+  },
 });

@@ -21,13 +21,14 @@
   "types": "./dist/index.d.mts",
   "exports": {
     ".": "./dist/index.mjs",
+    "./cli": "./dist/cli.mjs",
     "./package.json": "./package.json"
   },
   "files": [
     "dist"
   ],
   "bin": {
-    "wp-deploy": "./dist/cli.mjs"
+    "wp-deploy": "dist/cli.mjs"
   },
   "scripts": {
     "prepare": "husky",
